@@ -1,9 +1,0 @@
-function [imgDx, imgDy] = gaussderiv(img, sigma)
-% insert your code here
-    [w, h] = size(img);
-    derivative = gaussdx(-ceil(w/2):ceil(w/2), sigma);
-    for i = 1:h
-        imgDxconv2(imgImp, G, 'same');
-    end
-    
-end
