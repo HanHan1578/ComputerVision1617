@@ -6,7 +6,10 @@ function edge_image = my_canny(img, sigma, theta_low, theta_high)
 %     visited = zeros(w, h);
     edge_image = zeros(w,h);
     img_res = zeros(w,h);
-    [imgMag, imgDir]=gradmag(img, sigma);
+    G1=fspecial('gaussian');
+    imgMag =gradient(G1) ;
+    imgMag = conv2(img, imgMag, 'same');
+%     [imgMag, imgDir]=gradmag(img, sigma);
     visited = imgMag < theta_low;
     high = imgMag >= theta_high;
     visited(:,1) = true;

@@ -1,7 +1,8 @@
 function imgEdge = getedges2(img, sigma, theta)
 % insert your code here
     [w, h] = size(img);
-    imgEdge = zeros(w,h);
+    imgEdge = zeros(w,h);    
+%     img = gauss(img, sigma);
     [imgMag, imgDir]=gradmag(img, sigma);
     imgMax = nonmaxsupcanny(imgMag, imgDir);
     for i = 1:w
