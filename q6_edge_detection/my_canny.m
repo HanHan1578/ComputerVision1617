@@ -7,8 +7,16 @@ function edge_image = my_canny(img, sigma, theta_low, theta_high)
     edge_image = zeros(w,h);
     img_res = zeros(w,h);
     [imgMag, imgDir]=gradmag(img, sigma);
-    visited = imgMag < theta_low;
-    high = imgMag >= theta_high;
+    for i = 1:w
+        for j = 1:h
+            if isnan(imgDir(i,j))==1
+                imgDir(i,j) = 0;
+            end
+        end
+    end
+    imgMax = nonmaxsupcanny(imgMag, imgDir);
+    visited = imgMax < theta_low;
+    high = imgMax >= theta_high;
     visited(:,1) = true;
     visited(:,end) = true;
     visited(1,:) = true;
@@ -27,9 +35,7 @@ function edge_image = my_canny(img, sigma, theta_low, theta_high)
     for i = 1:w
         for j = 1:h
             if visited(i,j) == false
-%                 if high(i,j) == 0
                 follow_edge(i, j);
-%                 end
             end       
         end
     end

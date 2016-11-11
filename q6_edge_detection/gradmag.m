@@ -4,6 +4,7 @@ function [imgMag, imgDir]=gradmag(img, sigma)
     [imgDx, imgDy] = gaussderiv(img, sigma);
     imgMag = sqrt(imgDx.^2+imgDy.^2);
     imgDir = atan(imgDy./imgDx);
+    
 %     derivative_x = gaussdx(-ceil(w/2):ceil(w/2), sigma);    
 %     derivative_y = gaussdx(-ceil(h/2):ceil(h/2), sigma);
 %     derivative_x2 = derivative_x.*derivative_x;
