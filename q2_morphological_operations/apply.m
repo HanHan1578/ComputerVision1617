@@ -81,7 +81,10 @@ title('closed with disk');
 
 % Find a good combination
 combination_disk = strel('disk',2);
-cells_complete = imopen(imclose(cells_niblack, combination_disk), combination_disk); % just an example, there might be better combinations
+combination_square = strel('square', 5); % 5-by-5 square
+combination_line = strel('line', 15, 45); % line, length 10, angle 45
+
+cells_complete = imopen(imclose(cells_niblack, combination_square), combination_square); % just an example, there might be better combinations
 figure;
 imshow(cells_complete); 
 disp(a.combination);
