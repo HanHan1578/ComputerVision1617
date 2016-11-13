@@ -83,3 +83,4 @@ toc
 disp(a.niblack);
 
 end
+
